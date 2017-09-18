@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="5"
+    android:padding="20dp"
+    tools:context="app.guillen.com.myapplication.activities.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1.5"
+        android:weightSum="10">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Title"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_weight="4"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/Saldo1"
+                    android:layout_width="275sp"
+                    android:layout_height="match_parent"
+                    android:text="@string/saldo_ahorro"
+                    android:textSize="20sp"
+                    />
+                <TextView
+                    android:id="@+id/tvAhorro"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:text="S./ 0.0"
+                    android:layout_toEndOf="@id/Saldo1"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/Saldo2"
+                    android:layout_width="275sp"
+                    android:layout_height="match_parent"
+                    android:text="@string/saldo_credito"
+                    android:textSize="20sp"
+                    />
+                <TextView
+                    android:id="@+id/tvCredito"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:text="S./ 0.0"
+                    android:layout_toEndOf="@id/Saldo2"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/Saldo3"
+                    android:layout_width="275sp"
+                    android:layout_height="match_parent"
+                    android:text="@string/saldo_efectivo"
+                    android:textSize="20sp"
+                    />
+                <TextView
+                    android:id="@+id/tvEfectivo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:text="S./ 0.0"
+                    android:layout_toEndOf="@id/Saldo3"
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <ProgressBar
+                android:id="@+id/pgContabilidad"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3.5">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btnAgregar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:onClick="addItem"
+            android:src="@android:drawable/ic_menu_add" />
+
+    </LinearLayout>
+
+</LinearLayout>
