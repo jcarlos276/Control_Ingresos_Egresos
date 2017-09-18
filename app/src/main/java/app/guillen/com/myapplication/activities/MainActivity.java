@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REGISTER_FORM_REQUEST = 100;
     private TextView tvAhorro, tvCredito, tvEfectivo;
     private ProgressBar pgContabilidad;
+    private Button btnGraficos;
     private int saAhorro, saCredito, saEfectivo;
     private String tipoOp;
     private String tipoCu;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //--TRABAJANDO
-    private int sumIngresos, sumEgresos, porcentaje;
+    private int sumIngresos, sumEgresos, sumTotal, porcentaje;
     //--TRABAJANDO
 
 
@@ -41,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
         tvCredito = (TextView) findViewById(R.id.tvCredito);
         tvEfectivo = (TextView) findViewById(R.id.tvEfectivo);
         pgContabilidad = (ProgressBar) findViewById(R.id.pgContabilidad);
+        btnGraficos = (Button) findViewById(R.id.btnGraficos);
+
+        btnGraficos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,ChartsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void addItem(View view){
@@ -77,15 +87,12 @@ public class MainActivity extends AppCompatActivity {
                 switch (tipoCu){
                     case "Tarjeta de Credito":
                         saCredito=saCredito+montoOp;
-                        sumIngresos = sumIngresos+montoOp;
                         break;
                     case "Ahorro":
                         saAhorro=saAhorro+montoOp;
-                        sumIngresos = sumIngresos+montoOp;
                         break;
                     case "Efectivo":
                         saEfectivo=saEfectivo+montoOp;
-                        sumIngresos = sumIngresos+montoOp;
                         break;
                 }
                 break;
@@ -93,15 +100,12 @@ public class MainActivity extends AppCompatActivity {
                 switch (tipoCu){
                     case "Tarjeta de Credito":
                         saCredito=saCredito-montoOp;
-                        sumEgresos = sumEgresos+montoOp;
                         break;
                     case "Ahorro":
                         saAhorro=saAhorro-montoOp;
-                        sumEgresos = sumEgresos+montoOp;
                         break;
                     case "Efectivo":
                         saEfectivo=saEfectivo-montoOp;
-                        sumEgresos = sumEgresos+montoOp;
                         break;
                 }
                 break;
@@ -109,14 +113,18 @@ public class MainActivity extends AppCompatActivity {
 
         //-- TRABAJANDO
         sumIngresos = repositorioOperacion.getIngresos();
-        Toast.makeText(this, String.valueOf(sumIngresos),Toast.LENGTH_LONG).show();
+        sumEgresos = repositorioOperacion.getEgresos();
+        sumTotal = repositorioOperacion.getTotal();
+        porcentaje = ((sumIngresos*100)/sumTotal);
+        //Toast.makeText(this, String.valueOf("Ingresos:"+sumIngresos+"Egresos:"+sumEgresos+"Total:"+porcentaje),Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, String.valueOf(porcentaje),Toast.LENGTH_LONG).show();
         pgContabilidad.setProgress(porcentaje);
         //TRABAJANDO --
-
-
 
         actualizarSaldo();
 
     }
+
+
 
 }
