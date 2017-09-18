@@ -42,6 +42,15 @@ public class ChartsActivity extends AppCompatActivity {
         pieChart.setCenterTextSize(100);
         pieChart.invalidate();// refresh
 
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.GRAY);
+        colors.add(Color.BLUE);
+
+        set.setColors(colors);
+        set.setSliceSpace(2);
+        set.setValueTextSize(12);
+        set.setValueLineColor(Color.BLACK);
+
 
     }
 }
